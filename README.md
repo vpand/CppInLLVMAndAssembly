@@ -65,6 +65,17 @@ int main(int argc, const char *argv[]) {
   return 0;
 }
 ```
+### clangvmp.json
+```
+llvmir/clangvmp.json:
+```
+```json
+{
+  "main.cpp": {
+    "llvmir": ["main"]
+  }
+}
+```
 ## LLVM-IR
 ```
 build/llvmir/CMakeFiles/main-llvmir.dir/main.cpp.ll:
