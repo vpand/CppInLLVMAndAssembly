@@ -20,7 +20,7 @@ if len(thisdir) == 0:
      thisdir = '.'
 
 def main():
-    srcexts = ['.c', '.cc', 'cpp', '.h', '.hpp', '.m', '.mm']
+    srcexts = ['.c', '.cc', '.cpp', '.h', '.hpp', '.m', '.mm']
     for p in paths(thisdir):
         if p.find('build') >= 0 or p.find('.git') >= 0:
             continue
