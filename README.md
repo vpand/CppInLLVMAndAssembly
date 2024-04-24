@@ -21,18 +21,18 @@ cmake ..
 cmake --build .
 
 [1/6] Building CXX object llvmir\CMakeFiles\main-llvmir.dir\main.cpp.obj
-Using config file C:\Users\geekneo\Desktop\Release\CppInLLVMAndAssembly\llvmir\clangvmp.json.
+Using config file ..\llvmir\clangvmp.json.
 Using source file vmp config key : main.cpp.
 llvmir: main
 Created LLVM-IR partial file llvmir\CMakeFiles\main-llvmir.dir\main.cpp.ll.
 [2/6] Building CXX object clangvmp\CMakeFiles\clangvmp-demo.dir\main.cpp.obj
-Using config file C:\Users\geekneo\Desktop\Release\CppInLLVMAndAssembly\clangvmp\clangvmp.json.
+Using config file ..\clangvmp\clangvmp.json.
 Using source file vmp config key : main.cpp.
 vmpre: main
 vmp: main
 +> Encoding UraniumVCPU function main (1/1)...
 [5/6] Building CXX object coroutines\CMakeFiles\episode_coroutine.dir\main.cpp.obj
-Using config file C:\Users\geekneo\Desktop\Release\CppInLLVMAndAssembly\coroutines\clangvmp.json.
+Using config file ..\coroutines\clangvmp.json.
 Using source file vmp config key : main.cpp.
 llvmir: Coroutine
 llvmir: main
