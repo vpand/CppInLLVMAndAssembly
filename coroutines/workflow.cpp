@@ -1,8 +1,7 @@
 // https://en.cppreference.com/w/cpp/language/coroutines
 // https://zhuanlan.zhihu.com/p/497224333
 
-#include <coroutine>
-#include <iostream>
+#include "common.hpp"
 #include <thread>
 
 namespace Coroutine {

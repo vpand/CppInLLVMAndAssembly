@@ -1,5 +1,8 @@
 {
-  "main.cpp": {
+  "coreturn.cpp": {
+    "llvmir": ["struct", "CoroutineRef", "main"]
+  },
+  "workflow.cpp": {
     "llvmir": ["Coroutine", "main"]
   }
 }
