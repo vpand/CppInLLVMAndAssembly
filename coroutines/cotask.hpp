@@ -30,7 +30,17 @@ struct task {
     void return_void() { print_line_func(); }
 
     void unhandled_exception() { print_line_func(); }
+
+    std::suspend_never yield_value(const char *value) {
+      print_line_func();
+      value_ = value;
+      return {};
+    }
+
+    const char *value_;
   };
+
+  const char *value() { return handle_.promise().value_; }
 
   std::coroutine_handle<task::promise_type> handle_;
 };

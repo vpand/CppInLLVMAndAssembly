@@ -11,7 +11,7 @@ def paths(path):
     return path_collection
     
 clang_format = os.getenv('CLANG_FORMAT')
-if not os.path.exists(clang_format):
+if not clang_format or not os.path.exists(clang_format):
      print('CLANG_FORMAT env is missing.')
      sys.exit(-1)
 

@@ -2,7 +2,13 @@
   "coreturn.cpp": {
     "llvmir": ["struct", "CoroutineRef", "main"]
   },
+  "coawait.cpp": {
+    "llvmir": ["CoroutineRef", "main"]
+  },
+  "coyield.cpp": {
+    "llvmir": ["CoroutineRef", "main"]
+  },
   "workflow.cpp": {
-    "llvmir": ["Coroutine", "main"]
+    "llvmir": ["await_suspend"]
   }
 }
