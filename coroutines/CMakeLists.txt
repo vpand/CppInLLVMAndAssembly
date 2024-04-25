@@ -3,7 +3,7 @@ add_executable(episode_coroutine_coreturn coreturn.cpp)
 add_executable(episode_coroutine_workflow workflow.cpp)
 
 if (WIN32)
-set(Flag_DisExpcet -Xclang=-fno-exceptions)
+set(Flag_DisExpcet /EHs-c-)
 else()
 set(Flag_DisExpcet -fno-exceptions)
 endif()
