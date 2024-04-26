@@ -5,7 +5,9 @@ Deep insight of C++ in LLVM-IR and Assembly perspective.
 ### IDE
  * Visual Studio Code
 #### Plugins
- * LLVM Syntax Highlighting
+ * C/C++ IntelliSense from Microsoft
+ * LLVM Syntax Highlighting from colejcummins
+ * Markdown Preview Mermaid Support from Matt Bierner
 ### CLI
  * CMake
  * Ninja (optional on macOS/Linux, mandatory on Windows)
