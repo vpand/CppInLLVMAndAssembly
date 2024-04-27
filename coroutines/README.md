@@ -1,4 +1,21 @@
 # C++20 Coroutines
+## Function vs Coroutine
+```mermaid
+sequenceDiagram
+    FnCaller->>Function: Call
+    FnCaller-->Function: [sync]
+    Function->>FnCaller: Return
+    loop coroutine state machine 
+        CoCaller->>Coroutine: Call
+        Coroutine-->>CoCaller: [sync/async]
+        CoCaller-->>Coroutine: 
+        Coroutine->>CoCaller: Suspend: co_await/co_yield
+        CoCaller->>Coroutine: Resume: coroutine.resume
+        Coroutine-->>CoCaller: ...
+        CoCaller-->>Coroutine: 
+        Coroutine->>CoCaller: Return: co_return
+    end
+```
 ## co_return
 ```llvm
 define i64 @_ZN12CoroutineRef8coreturnEv()
