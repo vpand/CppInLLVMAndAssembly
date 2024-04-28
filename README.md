@@ -3,37 +3,35 @@ Deep insight of C++ in LLVM-IR and Assembly perspective.
 
 ## Prerequisites
 ### IDE
- * Visual Studio Code
+ * **Visual Studio Code**
 #### Plugins
- * C/C++ IntelliSense from Microsoft
- * LLVM Syntax Highlighting from colejcummins
- * Markdown Preview Mermaid Support from Matt Bierner
+ * **C/C++ IntelliSense** from Microsoft
+ * **LLVM Syntax Highlighting** from colejcummins
+ * **Markdown Preview Mermaid Support** from Matt Bierner
 ### CLI
- * CMake
- * Ninja (optional on macOS/Linux, mandatory on Windows)
- * ClangVMP
+ * **CMake**
+ * **Ninja** (optional on macOS/Linux, **mandatory on Windows**)
+ * **ClangVMP**
 ### Disassembler
- * VMPStudio
+ * **VMPStudio**
 ## Download
-ClangVMP compiler and VMPStudio disassembler can be downloaded through VPAssistant at [vpand.com](https://vpand.com/).
+ClangVMP compiler and VMPStudio disassembler can be downloaded through **VPAssistant** at [vpand.com](https://vpand.com/).
 ## CMake On Windows
 In "**x64 Native Tools Command Prompt for VS 2022**" command prompt:
 ```shell
 mkdir build
-cd build
-cmake .. -G Ninja
+cmake -B build -G Ninja
 ```
 
 ## CMake On macOS or Linux
 ```shell
 mkdir build
-cd build
-cmake ..
+cmake -B build
 ```
 
 ## Build
 ```shell
-cmake --build .
+build % cmake --build .
 ```
 ```shell
 [1/6] Building CXX object llvmir\CMakeFiles\main-llvmir.dir\main.cpp.obj
@@ -111,3 +109,7 @@ Copy from VMPStudio disassembler CPU window:
 0000000100003F84 | FD 7B C1 A8     | ldp x29, x30, [sp], #0x10  
 0000000100003F88 | C0 03 5F D6     | ret                        
 ```
+## Episodes
+ * [Facebook](https://www.facebook.com/people/Jesse-Liu/61555693542797/)
+ * [YouTube](https://www.youtube.com/@JesseVPAND/)
+ * [Instagram](https://www.instagram.com/jessevpand/)
