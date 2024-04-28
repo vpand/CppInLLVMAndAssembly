@@ -8,6 +8,9 @@
   "coyield.cpp": {
     "llvmir": ["CoroutineRef", "main"]
   },
+  "coyield_async.cpp": {
+    "llvmir": ["struct", "CoroutineRef", "main"]
+  },
   "workflow.cpp": {
     "llvmir": ["await_suspend"]
   }

@@ -1,6 +1,6 @@
 # C++20 Coroutines
 ## Reference
-A series of C++ Coroutines articles written by Lewiss Baker at [here](https://lewissbaker.github.io/).
+A series of C++ Coroutines articles written by Lewiss Baker are at [here](https://lewissbaker.github.io/).
 ## Function vs Coroutine
 ```mermaid
 sequenceDiagram
