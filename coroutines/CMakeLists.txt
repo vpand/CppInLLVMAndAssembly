@@ -13,6 +13,9 @@ else()
 set(Flag_DisExpcet -fno-exceptions)
 endif()
 
+# disable optimization to make final machine assembly code more readable
+set(CMAKE_BUILD_TYPE Debug)
+
 # disable c++ exception to minimize llvm-ir code
 target_compile_options(episode_coroutine_coreturn PRIVATE ${Flag_DisExpcet})
 target_compile_options(episode_coroutine_coawait  PRIVATE ${Flag_DisExpcet})

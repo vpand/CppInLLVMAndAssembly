@@ -18,6 +18,56 @@ sequenceDiagram
         Coroutine->>CoCaller: Return: co_return
     end
 ```
+### Return Object Interface
+```cpp
+struct CoReturnObject {
+  struct promise_type {
+    CoReturnObject get_return_object();
+    CoAwaitable initial_suspend();
+    CoAwaitable final_suspend();
+
+    // co_yield value <==> co_await promise.yield_value(value)
+    CoAwaitable yield_value(T value);
+    
+    // co_return [value]
+    void return_void();
+    void return_value(T value);
+
+    void unhandled_exception();
+    T value_;
+  };
+  std::coroutine_handle<CoReturnObject::promise_type> handle_;
+};
+```
+### Awaitable Interface
+```cpp
+struct CoAwaitable {
+  bool await_ready();
+  // true/void means suspend
+  // false means resume
+  bool/void await_suspend(coroutine_handle<>);
+  void await_resume();
+};
+```
+```mermaid
+flowchart TD
+    A[co_await awaitable] --> B{await_ready ?}
+    B -->|True| C[await_resume
+                 coroutine continues running]
+    B -->|False| D{await_suspend ?}
+    D -->|False| C
+    D -->|True or Void| E[return to caller
+                          caller continues running]
+
+```
+## Key Words
+```cpp
+CoReturnObject coroutine_impl(Args...) {
+  co_await CoAwaitable;
+  co_yield value;
+  co_return value;
+}
+```
 ## co_return
 ```llvm
 define i64 @_ZN12CoroutineRef8coreturnEv()
