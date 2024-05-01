@@ -2,6 +2,44 @@
 ## Reference
 A series of C++ Coroutines articles written by Lewiss Baker are at [here](https://lewissbaker.github.io/).
 ## Function vs Coroutine
+### Function
+```c
+// normal C/C++ function
+return_type function(args);
+```
+### Coroutine
+```cpp
+// C++ coroutine function
+coroutine_return_type coroutine(args);
+
+       <==>
+
+// pseudo abstraction
+class C++_coroutine {
+private:
+  // capture arguments to coroutine frame by value
+  coroutine(args);
+  
+public:
+  // return value stored in coroutine frame
+  return_type return_value();
+
+  // coroutine controllers from handle
+  void suspend();
+  void resume();
+  void destroy();
+
+private:
+  void resume_point(int point); // coroutine functional implementation
+
+public:
+  void *coroutine_handle; // coroutine driver handle
+
+private:
+  void *coroutine_heap_frame; // arguments, locals, resume points, return value, etc.
+};
+```
+### Workflow
 ```mermaid
 sequenceDiagram
     FnCaller->>Function: Call
@@ -18,7 +56,8 @@ sequenceDiagram
         Coroutine->>CoCaller: Return: co_return
     end
 ```
-### Return Object Interface
+## Coroutine Interface
+### Return Object
 ```cpp
 struct CoReturnObject {
   struct promise_type {
@@ -39,7 +78,7 @@ struct CoReturnObject {
   std::coroutine_handle<CoReturnObject::promise_type> handle_;
 };
 ```
-### Awaitable Interface
+### Awaitable Object
 ```cpp
 struct CoAwaitable {
   bool await_ready();
@@ -68,7 +107,7 @@ CoReturnObject coroutine_impl(Args...) {
   co_return value;
 }
 ```
-## co_return
+### co_return
 ```llvm
 define i64 @_ZN12CoroutineRef8coreturnEv()
 define void @__await_suspend_wrapper__ZN12CoroutineRef8coreturnEv_init(ptr %0, ptr %1)
@@ -88,7 +127,7 @@ F: cotask     L: 30   S: return_void
 F: cotask     L: 26   S: final_suspend
 F: cotask     L: 13   S: ~promise_type
 ```
-## co_await
+### co_await
 ```llvm
 define i64 @_ZN12CoroutineRef7coawaitEv()
 define void @__await_suspend_wrapper__ZN12CoroutineRef7coawaitEv_init(ptr %0, ptr %1)
@@ -99,7 +138,7 @@ define void @_ZN12CoroutineRef7coawaitEv.resume(ptr %0)
 define void @_ZN12CoroutineRef7coawaitEv.destroy(ptr %0)
 define void @_ZN12CoroutineRef7coawaitEv.cleanup(ptr %0)
 ```
-### sync
+#### sync
 ```
 FILE          LINE    SYMBOL
 F: cotask     L: 11   S: promise_type
@@ -112,7 +151,7 @@ F: cotask     L: 30   S: return_void
 F: cotask     L: 26   S: final_suspend
 F: cotask     L: 13   S: ~promise_type
 ```
-### async
+#### async
 ```
 FILE          LINE    SYMBOL
 F: cotask     L: 55   S: promise_type
@@ -144,7 +183,7 @@ F: coawait    L: 27   S: main
 F: cotask     L: 50   S: ~task_async
 F: cotask     L: 57   S: ~promise_type
 ```
-## co_yield
+### co_yield
 ```llvm
 define i64 @_ZN12CoroutineRef7coyieldEv()
 define void @__await_suspend_wrapper__ZN12CoroutineRef7coyieldEv_init(ptr %0, ptr %1)
@@ -155,7 +194,7 @@ define void @_ZN12CoroutineRef7coyieldEv.resume(ptr %0)
 define void @_ZN12CoroutineRef7coyieldEv.destroy(ptr %0)
 define void @_ZN12CoroutineRef7coyieldEv.cleanup(ptr %0)
 ```
-### sync
+#### sync
 ```
 FILE          LINE    SYMBOL
 F: cotask     L: 11   S: promise_type
@@ -167,7 +206,7 @@ F: cotask     L: 30   S: return_void
 F: cotask     L: 26   S: final_suspend
 F: cotask     L: 13   S: ~promise_type
 ```
-### async
+#### async
 ```
 FILE          LINE    SYMBOL
 F: cotask     L: 111  S: promise_type
